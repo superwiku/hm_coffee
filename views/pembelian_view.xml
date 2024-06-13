@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- hmcoffee.pembelian tree view -->
+    <record id="hmcoffee_pembelian_view_tree" model="ir.ui.view">
+        <field name="name">Daftar Pembelian</field>
+        <field name="model">hmcoffee.pembelian</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="supplier_id"/>
+                <field name="tgl_pembelian"/>
+                <field name="total_pembelian"/>
+            </tree>
+        </field>
+    </record>
+    <!-- hmcoffee.pembelian form view -->
+    <record id="hmcoffee_pembelian_view_form" model="ir.ui.view">
+        <field name="name">Form Pembelian</field>
+        <field name="model">hmcoffee.pembelian</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="supplier_id"/>
+                        <field name="tgl_pembelian"/>
+                        <field name="total_pembelian"/>
+                    </group>
+                    <group name="name" string="Detail Pembelian">
+                        <field name="detailpembelian_ids">
+                            <tree editable='bottom'>
+                                <field name="bahan_id"/>
+                                <field name="harga_modal"/>
+                                <field name="qty"/>
+                                <field name="subtotal" sum='Total Beli'/>
+                            </tree>
+                        </field>                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- hmcoffee.pembelian action window -->
+    <record id="hmcoffee_pembelian_action" model="ir.actions.act_window">
+        <field name="name">Pembelian</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hmcoffee.pembelian</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_pembelian_menu_act" 
+              name="Pembelian" 
+              parent="transaksi_menu_categ" 
+              action="hmcoffee_pembelian_action" 
+              sequence="10"/>
+
+</odoo>

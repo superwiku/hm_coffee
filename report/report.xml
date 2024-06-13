@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_penjualan_pdf" model="ir.actions.report">
+        <field name="name">Print Laporan Penjualan</field> 
+        <field name="model">hmcoffee.penjualan</field>    
+        <field name="report_type">qweb-pdf</field>  
+        <field name="report_name">hmcoffee.report_penjualan_template_pdf</field>  
+        <field name="report_file">hmcoffee.report_penjualan_template_pdf</field>  
+        <field name="binding_model_id" ref="model_hmcoffee_penjualan"/>
+        <field name="binding_type">report</field>            
+    </record>     
+    <record id="report_pembelian_pdf" model="ir.actions.report">
+        <field name="name">Print Laporan Pembelian</field> 
+        <field name="model">hmcoffee.pembelian</field>    
+        <field name="report_type">qweb-pdf</field>  
+        <field name="report_name">hmcoffee.report_pembelian_template_pdf</field>  
+        <field name="report_file">hmcoffee.report_pembelian_template_pdf</field>  
+        <field name="binding_model_id" ref="model_hmcoffee_pembelian"/>
+        <field name="binding_type">report</field>            
+    </record>     
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- hmcoffee.pelanggan action window -->
+    <record id="hmcoffee_pelanggan_action" model="ir.actions.act_window">
+        <field name="name">Pelanggan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hmcoffee.pelanggan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_pelanggan_menu_act" 
+                name="Pelanggan" 
+                parent="stakeholder_menu_categ" 
+                action="hmcoffee_pelanggan_action" 
+                sequence="15"/>
+
+</odoo>

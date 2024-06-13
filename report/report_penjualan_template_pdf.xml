@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_penjualan_template_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="br">    
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1>LAPORAN PENJUALAN</h1>
+                        <div class="row">
+                            <div class="col-4">
+                                Nama        :
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                Tanggal     :
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.tgl_transaksi"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                Total Harga :
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.total_harga"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                        
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Nama Barang</th>
+                                    <th>Stok</th>
+                                    <th>Harga Modal</th>
+                                    <th>Harga Jual</th>
+                                </thead>
+                                <t t-foreach="br.detailpenjualan_ids" t-as="brs">
+                                    <tr>
+                                        <td><span t-esc="brs.bahan_id.nama_bahan"/></td>
+                                        <td><span t-esc="brs.quantity"/></td>
+                                        <td><span t-esc="brs.harga_satuan"/></td>
+                                        <td><span t-esc="brs.subtotal"/></td>
+                                    </tr>
+                                </t>
+                            </table>   
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+        
+    </template>
+    
+
+</odoo>

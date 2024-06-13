@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- hmcoffee.bahan tree view -->
+    <record id="hmcoffee_bahan_view_tree" model="ir.ui.view">
+        <field name="name">Daftar Bahan</field>
+        <field name="model">hmcoffee.bahan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="nama_bahan"/>
+                <field name="kategori_bahan_id"/>
+                <field name="stok"/>
+                <field name="harga_modal"/>
+                <field name="total_modal"/>
+                <field name="kondisi_stok"/>
+                <field name="supplier_ids"/>
+            </tree>
+        </field>
+    </record>
+    <!-- hmcoffee.bahan form view -->
+    <record id="hmcoffee_bahan_view_form" model="ir.ui.view">
+        <field name="name">Form Bahan Cafe</field>
+        <field name="model">hmcoffee.bahan</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="nama_bahan"/>
+                        <field name="kategori_bahan_id"/>
+                        <field name="stok"/>
+                        <field name="harga_modal"/>
+                        <field name="total_modal"/>
+                        <field name="kondisi_stok"/>
+                        <field name="supplier_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- hmcoffee.bahan action window -->
+    <record id="hmcoffee_bahan_action" model="ir.actions.act_window">
+        <field name="name">Bahan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hmcoffee.bahan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_bahan_menu_act" 
+              name="Bahan" 
+              parent="stok_menu_categ" 
+              action="hmcoffee_bahan_action" 
+              sequence="15"/>
+
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- hmcoffee.kategoribahan tree view -->
+<record id="hmcoffee_kategoribahan_view_tree" model="ir.ui.view">
+    <field name="name">Kategori Bahan</field>
+    <field name="model">hmcoffee.kategoribahan</field>
+    <field name="arch" type="xml">
+        <tree>
+            <!-- Add your fields here -->
+            <field name="name"/>
+            <field name="no_rak"/>
+            <field name="bahan_ids"/>
+        </tree>
+    </field>
+</record>
+<!-- hmcoffee.kategoribahan form view -->
+<record id="hmcoffee_kategoribahan_view_form" model="ir.ui.view">
+    <field name="name">Form Kategori Bahan</field>
+    <field name="model">hmcoffee.kategoribahan</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="no_rak"/>
+                </group>
+            
+                <group name="name" string="Daftar Bahan">
+                    <field name="bahan_ids"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+    <!-- hmcoffee.kategoribahan action window -->
+    <record id="hmcoffee_kategoribahan_action" model="ir.actions.act_window">
+        <field name="name">Kategori Bahan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hmcoffee.kategoribahan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_kategoribahan_menu_act" 
+              name="Kategori Bahan" 
+              parent="stok_menu_categ" 
+              action="hmcoffee_kategoribahan_action" 
+              sequence="10"/>
+
+</odoo>
