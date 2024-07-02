@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import api, models, fields
 
 class Pegawai(models.Model):
     _name = 'hmcoffee.pegawai'
@@ -13,7 +13,14 @@ class Pegawai(models.Model):
                               required=True)
     foto = fields.Binary(string='Foto', help='choose picture')
     tgl_lahir = fields.Datetime(string='Tanggal Lahir', default=fields.Datetime.now())
+    status = fields.Char(string='status')
     
+    @api.onchange('usia')
+    def _tentukan_status(self):        
+            if self.usia > 30:
+                self.status = "tua"
+            else:
+                self.status = "muda"
     
     
     

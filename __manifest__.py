@@ -21,16 +21,20 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product'],
+    'depends': ['base','product','report_xlsx'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
+        'data/referensi_penjualan.xml',
+        'views/menu.xml', 
         'views/views.xml',
         'views/templates.xml',  
+        'wizard/reportpenjualanwz_view.xml',
         'report/report.xml',  
-        'report/report_penjualan_template_pdf.xml',
-        'views/menu.xml',    
+        'report/report_penjualan_template_pdf.xml',     
+        'report/report_penjualan_template_wizard_pdf.xml',       
         'views/pegawai_view.xml',
         'views/pelanggan_view.xml',
         'views/kategoribahan_view.xml',
@@ -38,6 +42,9 @@
         'views/supplier_view.xml',
         'views/pembelian_view.xml',
         'views/penjualan_view.xml',
+        'views/karyawan_view.xml',
+        'views/stokopname_view.xml',
+        'views/alat_view.xml',
         
     ],
     # only loaded in demonstration mode

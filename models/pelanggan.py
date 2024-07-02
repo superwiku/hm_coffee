@@ -1,10 +1,18 @@
 from odoo import models, fields
 
 class Pelanggan(models.Model):
-    _name = 'hmcoffee.pelanggan'
+    _inherit = 'res.partner'
     _description = 'Pelanggan'
 
-    name = fields.Char(string='Nama')
-    alamat = fields.Char(string='Alamat')
+    user_id = fields.Many2one(comodel_name='res.users', string='Kasir', readonly=True, default=lambda self: self.env.user)    
+    is_member = fields.Boolean(string='Member')    
+
+    level = fields.Selection([
+        ('nonlevel', 'Nonlevel'),
+        ('bronze', 'Bronze'),
+        ('silver', 'Silver'),
+        ('gold', 'Gold')
+    ], string='Level')
+    
     
     

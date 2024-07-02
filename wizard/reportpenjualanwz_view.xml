@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- hmcoffee.reportpenjualanwz form view -->
+    <record id="hmcoffee_reportpenjualanwz_view_form" model="ir.ui.view">
+        <field name="name">model.name.view.form</field>
+        <field name="model">hmcoffee.reportpenjualanwz</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="dari_tgl"/>
+                        <field name="ke_tgl"/>
+                    </group>
+                    <footer>
+                        <button name="action_penjualan_report" type="object" string="Print Report" class="btn btn-primary"/>
+                        <button string="Cancel" special="cancel" class="btn btn-warning"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- hmcoffee.reportpenjualanwz action window -->
+    <record id="hmcoffee_reportpenjualanwz_action" model="ir.actions.act_window">
+        <field name="name">Report Penjualan Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hmcoffee.reportpenjualanwz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hmcoffee_reportpenjualanwz_view_form"/>
+        <field name="target">new</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="_menu_act" 
+              name="Laporan Penjualan Wizard" 
+              parent="laporan_menu_categ" 
+              action="hmcoffee_reportpenjualanwz_action" 
+              sequence="10"/>
+
+</odoo>

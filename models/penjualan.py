@@ -1,9 +1,19 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 class Penjualan(models.Model):
     _name = 'hmcoffee.penjualan'
     _description = 'model.technical.name'
+    referensi = fields.Char(string='No. Referensi', 
+                            required=True, 
+                            readonly=True, 
+                            default=lambda self : _('New')
+                            )
+    
+    user_id = fields.Many2one(comodel_name='res.users', string='Kasir', readonly=True, default=lambda self: self.env.user)    
+    
+    membership = fields.Boolean(string='Apakah member ?')
+    partner_id = fields.Many2one(comodel_name='res.partner', string='Nama Member')    
     name = fields.Char(string='Nama')
     tgl_transaksi = fields.Datetime(string='Tanggal Transaksi', default=fields.Datetime.now())
     detailpenjualan_ids = fields.One2many(
@@ -42,7 +52,16 @@ class Penjualan(models.Model):
                 if databaru in a:
                     databaru.bahan_id.stok -= databaru.quantity
         return record
-
+    @api.model
+    def create(self, vals):
+        if vals.get('referensi', _("New")) == _("New"):
+            membership = vals.get('membership', False)
+            if membership == True:
+                vals['referensi'] = self.env['ir.sequence'].next_by_code('referensi.penjualanmember') or _("New")
+            else:
+                vals['referensi'] = self.env['ir.sequence'].next_by_code('referensi.penjualannonmember') or _("New")
+        record = super(Penjualan, self).create(vals)
+        return record
 
 
 class DetailPenjualan(models.Model):

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_ref_penjualanmember" model="ir.sequence">
+        <field name="name">Referensi Penjualan Member</field>
+        <field name="code">referensi.penjualanmember</field>
+        <field name="prefix">PJM-%(range_year)s-%(month)s-</field>
+        <field name="padding">4</field>
+        <field name="suffix">HC</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_ref_penjualannonmember" model="ir.sequence">
+        <field name="name">Referensi Penjualan Non Member</field>
+        <field name="code">referensi.penjualannonmember</field>
+        <field name="prefix">PJNM-%(range_year)s-%(month)s-</field>
+        <field name="padding">4</field>
+        <field name="suffix">HC</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

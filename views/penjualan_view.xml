@@ -4,12 +4,18 @@
     <record id="hmcoffee_penjualan_view_tree" model="ir.ui.view">
         <field name="name">Daftar Penjualan</field>
         <field name="model">hmcoffee.penjualan</field>
-        <field name="arch" type="xml">
+        <field name="arch" type="xml">            
             <tree>
                 <!-- Add your fields here -->
+                <button name="%(hmcoffee.report_penjualan_pdf)d" type="action" icon="fa-print" string="PRINT" class="btn btn-success"/>
+                <field name="referensi"/>
+                <field name="user_id" groups="hmcoffee.group_hmcoffee_managerpenjualan"/>
+                <field name="membership"/>
                 <field name="name"/>
+                <field name="partner_id"/>
                 <field name="tgl_transaksi"/>
                 <field name="total_harga"/>
+                
             </tree>
         </field>
     </record>
@@ -19,16 +25,30 @@
         <field name="model">hmcoffee.penjualan</field>
         <field name="arch" type="xml">
             <form string="">
+                <header>
+                    <button name="%(hmcoffee.report_penjualan_pdf)d" type="action" icon="fa-print" string="PRINT" class="btn btn-success"/>
+                </header>
                 <sheet>
+                    <div class="oe_title">
+                        <h1><field name="referensi" readonly="1"/></h1>
+                    </div>
                     <group>
                         <!-- Add your fields here -->
-                        <field name="name"/>
-                        <field name="tgl_transaksi"/>
-                        <field name="total_harga"/>
+                        <field name="user_id" groups="hmcoffee.group_hmcoffee_managerpenjualan"/>
+                        <field name="membership" position="attributes">
+                            <attribute name="attrs">{
+                                readonly:['user_id','in',[ref('hmcoffee.group_hmcoffee_kasir')]]
+                            }</attribute>
+                        </field>                        
+                        <!-- <field name="membership" attrs="{'readonly':[('groups','!=',ref('hmcoffee.group_hmcoffee_managerpenjualan'))]}"/> -->
+                        <field name="name" attrs="{'invisible':[('membership','!=',False)]}"/>
+                        <field name="partner_id" attrs="{'invisible':[('membership','!=',True)]}" domain="[('is_member', '=', True),('level','=','silver'),]"/>
+                        <field name="tgl_transaksi" attrs="{'readonly':[('membership','!=',False)]}"/>
+                        <field name="total_harga" attrs="{'readonly':[('membership','!=',False)]}"/>
                     </group>
                     <group name="name" string="Detail Penjualan">
                         <field name="detailpenjualan_ids">
-                            <tree editable='bottom'>
+                            <tree editable='bottom'>                                
                                 <field name="bahan_id"/>
                                 <field name="harga_satuan"/>
                                 <field name="quantity"/>
@@ -52,6 +72,7 @@
               name="Penjualan" 
               parent="transaksi_menu_categ" 
               action="hmcoffee_penjualan_action" 
-              sequence="15"/>
+              sequence="15"
+              />
 
 </odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- product.template inherit form view -->
+    <record id="hmcoffee_product_template_form_view_inherit" model="ir.ui.view">
+        <field name="name">Form Peralatan</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='standard_price']" position="after">
+                <field name="stock"/>
+            </xpath>  
+        </field>
+    </record>
+    
+    <!-- product.template action window -->
+    <record id="product_template_alat_action" model="ir.actions.act_window">
+        <field name="name">Peralatan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_alat_menu_act" 
+              name="Peralatan" 
+              parent="hmcoffee_menu_root" 
+              action="product_template_alat_action" 
+              sequence="40"/>
+
+</odoo>

@@ -10,6 +10,7 @@
                 <field name="name"/>
                 <field name="usia"/>
                 <field name="tgl_lahir"/>
+                <field name="status"/>
                 <field name="jabatan"/>
                 <field name="foto" widget="image"/>
             </tree>
@@ -27,6 +28,7 @@
                         <field name="name"/>
                         <field name="usia"/>
                         <field name="tgl_lahir"/>
+                        <field name="status"/>
                     </group>
                     <group name="jabatan" string="Posisi">
                         <field name="jabatan"/>

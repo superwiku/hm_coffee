@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- hr.employee inherit tree view -->
+    <record id="hmcoffee_hr_employee_tree_view_inherit" model="ir.ui.view">
+        <field name="name">Daftar Karyawan</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="string">Nomor Telepon</attribute>
+            </xpath>    
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="is_menikah"/>
+                <field name="user_id"/>
+            </xpath>   
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>      
+        </field>
+    </record>
+    <!-- hr.employee inherit form view -->
+    <record id="hmcoffee_hr_employee_view_form_inherit" model="ir.ui.view">
+        <field name="name">Form Karyawan</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="string">Nomor Telepon</attribute>
+            </xpath> 
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="is_menikah"/>
+                <field name="user_id"/>
+            </xpath>  
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+        </field>
+    </record>
+    <!-- hr.employee action window -->
+    <record id="hmcoffee_hr_employee_action" model="ir.actions.act_window">
+        <field name="name">Karyawan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_karyawan_menu_act" 
+              name="Karyawan" 
+              parent="stakeholder_menu_categ" 
+              action="hmcoffee_hr_employee_action" 
+              sequence="20"/>
+
+</odoo>

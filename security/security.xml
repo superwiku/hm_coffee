@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="module_category_hmcoffee" model="ir.module.category">
+        <field name="name">HM Coffee</field>  
+        <field name="description">HM Coffee Management</field>
+    </record>
+    
+    <record id="group_hmcoffee_kasir" model="res.groups">
+        <field name="name">Kasir</field>
+        <field name="category_id" ref='module_category_hmcoffee'/>
+    </record>
+    <record id="group_hmcoffee_managerpenjualan" model="res.groups">
+        <field name="name">Manager Penjualan</field>
+        <field name="category_id" ref='module_category_hmcoffee'/>
+        <field name="implied_ids" eval="[(4, ref('group_hmcoffee_kasir'))]"/>
+    </record>
+    
+    <record id="hmcoffee_kasir_rule" model="ir.rule">
+        <field name="name">Hmcoffee Kasir hanya melihat miliknya</field>
+        <field name="model_id" ref="model_hmcoffee_penjualan"/>
+        <field name="groups" eval="[(4, ref('group_hmcoffee_kasir'))]"/>
+        <field name="perm_read" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+    </record>
+
+    <record id="hmcoffee_managerpenjualan_rule" model="ir.rule">
+        <field name="name">Hmcoffee Rule Manager Penjualan</field>
+        <field name="model_id" ref="model_hmcoffee_penjualan"/>
+        <field name="groups" eval="[(4, ref('group_hmcoffee_managerpenjualan'))]"/>
+        <field name="perm_read" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+    <record id="hmcoffee_managerpenjualan_rule" model="ir.rule">
+        <field name="name">Hmcoffee Rule Manager Penjualan</field>
+        <field name="model_id" ref="model_hr_employee"/>
+        <field name="groups" eval="[(6,0,[ref('group_hmcoffee_managerpenjualan')])]"/>
+        <field name="perm_read" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+    </record>
+    
+    
+</odoo>

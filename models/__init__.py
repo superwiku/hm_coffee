@@ -9,3 +9,6 @@ from . import member
 from . import supplier
 from . import pembelian
 from . import penjualan
+from . import karyawan
+from . import stokopname
+from . import alat

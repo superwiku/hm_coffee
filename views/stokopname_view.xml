@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- hmcoffee.stokopname tree view -->
+    <record id="hmcoffee_stokopname_view_tree" model="ir.ui.view">
+        <field name="name">History Stok Opname</field>
+        <field name="model">hmcoffee.stokopname</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="tgl_stokopname"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- hmcoffee.stokopname form view -->
+    <record id="hmcoffee_stokopname_view_form" model="ir.ui.view">
+        <field name="name">Stok Opname</field>
+        <field name="model">hmcoffee.stokopname</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="tgl_stokopname"/>
+                        <field name="detailstokopname_ids">
+                            <tree editable="bottom">
+                                <field name="bahan_id"/>
+                                <field name="stok"/>
+                                <field name="check"/>
+                                <field name="catatan"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- hmcoffee.stokopname action window -->
+    <record id="hmcoffee_stokopname_action" model="ir.actions.act_window">
+        <field name="name">Stok Opname</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hmcoffee.stokopname</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_stokopname_menu_act" 
+              name="Stok Opname" 
+              parent="hmcoffee_menu_root" 
+              action="hmcoffee_stokopname_action" 
+              groups="hmcoffee.group_hmcoffee_managerpenjualan"
+              sequence="30"/>
+
+</odoo>

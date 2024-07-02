@@ -9,4 +9,6 @@
     <menuitem id="stok_menu_categ" name="Stok Barang" parent="hmcoffee_menu_root" sequence="15"/>
     <!-- This Menu Item Must have a parent -->
     <menuitem id="transaksi_menu_categ" name="Transaksi" parent="hmcoffee_menu_root" sequence="20"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="laporan_menu_categ" name="Laporan" parent="hmcoffee_menu_root" sequence="25"/>
 </odoo>
